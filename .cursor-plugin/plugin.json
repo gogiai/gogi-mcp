@@ -1,0 +1,42 @@
+{
+  "name": "gogi",
+  "displayName": "Gogi",
+  "version": "1.0.0",
+  "description": "Unified trading infrastructure and execution middleware connecting AI agents to live brokers (Alpaca, Charles Schwab, Kraken, Coinbase, TradeLocker), Web3 non-custodial wallets, real-time equities/ETFs/crypto/forex market data, DeFi swaps, institutional research feeds, and algorithmic backtesting.",
+  "author": {
+    "name": "Gogi Inc.",
+    "email": "clarice@gogi.ai",
+    "url": "https://gogi.ai"
+  },
+  "homepage": "https://gogi.ai",
+  "repository": "https://github.com/gogiai/gogi-mcp",
+  "license": "MIT",
+  "icon": "https://gogi.ai/32x32.svg",
+  "keywords": [
+    "trading",
+    "finance",
+    "stocks",
+    "etfs",
+    "crypto",
+    "forex",
+    "options",
+    "defi",
+    "wallets",
+    "prediction-markets",
+    "brokers",
+    "alpaca",
+    "schwab",
+    "kraken",
+    "coinbase",
+    "tradelocker",
+    "mcp",
+    "backtesting"
+  ],
+  "mcp": {
+    "url": "https://api.gogi.ai/api/mcp/stream",
+    "type": "http",
+    "headers": {
+      "Authorization": "Bearer ${apiKey}"
+    }
+  }
+}

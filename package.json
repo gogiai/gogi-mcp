@@ -1,0 +1,43 @@
+{
+  "name": "@gogi/mcp-server",
+  "version": "1.0.0",
+  "description": "Unified trading infrastructure, multi-broker execution, Web3 wallets, DeFi swaps, and research data feeds for Model Context Protocol (MCP) clients (Cursor, Claude, Windsurf).",
+  "main": "dist/cli.js",
+  "bin": {
+    "gogi-mcp": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cursor",
+    "claude",
+    "trading",
+    "stocks",
+    "etfs",
+    "forex",
+    "crypto",
+    "defi",
+    "wallets",
+    "alpaca",
+    "schwab",
+    "kraken",
+    "coinbase",
+    "tradelocker",
+    "finance"
+  ],
+  "author": "Gogi Inc. <support@gogi.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gogiai/gogi-mcp.git"
+  },
+  "homepage": "https://gogi.ai",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
+  }
+}

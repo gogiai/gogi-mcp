@@ -1,0 +1,9 @@
+# Gogi MCP Server Cursor Rules
+
+When connected to the Gogi MCP Server (`https://api.gogi.ai/api/mcp/stream`):
+- Call `get_portfolio` and `get_positions` to inspect existing risk, cross-broker buying power, and Web3 non-custodial wallet balances before generating orders.
+- Use `get_market_data` and `analyze_chart_structure` for live quotes, RSI, MACD, SMA indicators, and support/resistance levels.
+- Support all asset classes: Equities & ETFs (US Stocks, Index/Sector ETFs via Alpaca/Schwab), Forex (`EUR/USD`, `GBP/USD`, `USD/JPY` via TradeLocker/OANDA in lots), Crypto & Web3 (BTC, ETH, SOL, EVM/Solana wallets, on-chain DeFi swaps via Kraken/Coinbase/Alpaca), and Prediction Markets (Polymarket/Kalshi).
+- For Forex trades, always verify lot size (`1.0` standard lot = 100k units, `0.1` mini lot = 10k units, `0.01` micro lot = 1k units).
+- Use `execute_trade` to place orders according to the user's risk policy and broker configuration.
+- Prompt the user for confirmation when executing live financial operations unless autonomous mode (AITL) is enabled.

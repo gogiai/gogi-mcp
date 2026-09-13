@@ -1,0 +1,29 @@
+---
+description: Guidance for using the Gogi Trading Infrastructure MCP server in Cursor
+globs: *
+alwaysApply: true
+---
+
+# Gogi Trading & Financial Infrastructure MCP Guidance
+
+When using Gogi's MCP server tools in Cursor, adhere strictly to these operational guidelines:
+
+## Core Principles
+1. **Safety & Policy First**: Always call `get_policy` or `get_platform_disclosure` when planning trades to ensure compliance with max position size, daily loss limits, and execution loop mode (HITL vs AITL).
+2. **Read Before Writing**:
+   - Check current balances, buying power, Web3 non-custodial wallet balances, and open positions using `get_portfolio` and `get_positions` before executing orders or closing positions.
+   - List connected broker accounts with `list_brokers` to obtain valid `broker_account_id` references.
+3. **Multi-Asset Class Support**:
+   - **Equities & ETFs**: US stocks and ETFs (e.g. `AAPL`, `NVDA`, `TSLA`, `SPY`, `QQQ`, `IWM`, `DIA`, `XLK`) via Alpaca or Charles Schwab.
+   - **Forex & CFDs**: Major currency pairs (`EUR/USD`, `GBP/USD`, `USD/JPY`, `AUD/USD`, `USD/CAD`, `USD/CHF`, `NZD/USD`) via TradeLocker or OANDA. Quantities must always follow Forex lot sizing (`1.0` standard lot = 100k units, `0.1` mini lot = 10k units, `0.01` micro lot = 1k units).
+   - **Cryptocurrency & Web3 Wallets**: Spot & Perpetual pairs (`BTC/USD`, `ETH/USD`, `SOL/USD`), connected EVM/Solana non-custodial wallets, and on-chain DeFi swaps via Kraken, Coinbase, Alpaca, and Web3 wallets.
+   - **Prediction Markets**: Real-money event outcomes via Polymarket or Kalshi with `search_predictions` and `execute_prediction`.
+4. **Market Analysis**:
+   - Fetch real-time quotes, technical indicators (RSI, MACD, SMAs) with `get_market_data(symbol, timeframe)`.
+   - Analyze support/resistance pivots and geometric chart patterns with `analyze_chart_structure(symbol, timeframe)`.
+5. **Human-In-The-Loop (HITL) Trade Execution**:
+   - For order placement (`execute_trade`), confirm the asset class, symbol, side (buy/sell), quantity/lots, order type, and broker account with the user unless autonomous AITL mode is explicitly set in Agent Policy.
+   - For closing positions, use `close_positions(broker_account_id, symbol, quantity, side)`.
+   - Check pending approval status with `list_pending_trades` or `get_pending_trade_status`.
+6. **Quantitative Backtesting & Strategy Management**:
+   - Validate strategies historically using `run_backtest(symbol, timeframe, initial_capital, entry_conditions, exit_conditions)` before deploying live.

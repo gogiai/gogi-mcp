@@ -1,0 +1,17 @@
+startCommand:
+  type: http
+  url: https://api.gogi.ai/api/mcp/stream
+  headers:
+    Authorization: "Bearer {apiKey}"
+configSchema:
+  type: object
+  required:
+    - apiKey
+  properties:
+    apiKey:
+      type: string
+      description: "Your Gogi Agent API key from https://gogi.ai/agents"
+      format: password
+description: "Gogi MCP connects AI agents to policy-controlled market data, portfolio and position monitoring, multi-broker trade execution, prediction markets, saved trading algorithms, live instances, data feeds, files, and historical backtesting. Users keep broker credentials in Gogi while Agent Policy and optional in-app confirmation govern every trading action."
+homepage: "https://gogi.ai/agents"
+iconUrl: "https://gogi.ai/32x32.svg"
